@@ -1,21 +1,31 @@
-# PTT UETS E-İmza (e-Tebligat) — macOS Apple Silicon (M1/M2/M3/M4) Kurulumu (arm64)
+# PTT UETS E-imza (e-Tebligat) — macOS Apple Silicon kurulumu
 
-UETS e-Tebligat e-imza uygulamasını **MacBook, MacBook Pro, MacBook Air, Mac mini ve iMac**'de native çalıştırın. Apple Silicon (M serisi, ARM tabanlı işlemci) için **arm64** `.app`; gömülü Java 11 ile gelir — Rosetta gerekmez, ayrı Java kurulumu gerekmez.
+> **Kısa yanıt:** UETS üzerinden gelen e-tebligatı Mac'inizde açıp imzalamak mı istiyorsunuz? Bu proje, UETS e-imza istemcisini (JNLP) **MacBook, MacBook Pro, MacBook Air, Mac mini ve iMac**'de (Apple Silicon / M serisi / ARM tabanlı işlemci) çift tıklayla açılan native bir `.app`'e paketler: gömülü arm64 Java 11 sayesinde Rosetta veya ayrı Java gerekmez. **Gayriresmî topluluk çalışmasıdır; resmî kurum uygulaması değildir.**
+>
+> **KEP mi UETS mi?** UETS (e-tebligat) ile PTT KEP Webmail **farklı** uygulamalardır; işlem kodları karşılıklı geçmez. Doğru uygulamayı seçtiğinizden emin olun.
 
-**Kimler için:** e-tebligat alan herkes — avukatlar, arabulucular ve bilirkişiler (1 Ocak 2019'dan beri UETS'e dahil olma ve KEP alma zorunluluğu vardır), anonim/limited şirketler (Tebligat Kanunu 7/A), mali müşavirler, doktorlar, mühendis ve mimarlar, sigorta ve finans profesyonelleri ile KEP adresi bulunan tüm kullanıcılar.
+## İlk kez kuranlar için
+
+1. **Kart ve sürücü:** e-imza kartı + kart okuyucu + **arm64 AKİS sürücüsü**: [akiskart.bilgem.tubitak.gov.tr/destek](https://akiskart.bilgem.tubitak.gov.tr/tr/destek/) → "Mac OS Arm (Apple Silicon)". Kontrol: `lipo -archs /usr/local/lib/libakisp11.dylib` → `arm64`.
+2. **En kolay kurulum:** [Releases](../../releases) → `UetsEimza-arm64-*.dmg`. Homebrew isteğe bağlıdır: `brew install --cask adeministratorr/tap/uets-eimza`.
+3. **Başarılı kurulum:** Uygulama açıldığında UETS giriş ekranı gelir; e-tebligat açma ve imza/PIN akışı ilerler.
+4. **Sık hata:** "Akıllı Kart Bulunamadı" → arm64 sürücü eksik. "Geliştirici doğrulanamadı" → DMG notarize olduğu için normal açılır; kaynaktan derlemede sağ tık → **Aç**.
+5. **Önemli sınır (dürüst not):** Bu pakette kart takılı olmadan yalnızca açılış ve sunucu bağlantısı test edildi; "Akıllı Kart Bulunamadı" durumu görüldü. Gerçek kartla imzalama, aynı yöntemi kullanan PTT KEP projesinde uçtan uca doğrulandı. Uygulama yalnızca **arm64** içindir; Intel Mac desteklenmez. PIN'inizi hiçbir komuta/issue'ya yazmayın.
+
+> **Güvenlik notu:** Bu paket resmî kurum uygulaması değildir. DMG sürümü Developer ID ile imzalı ve Apple notarizasyonundan geçmiştir; sürüm notlarında `sha256` bulunur. Kaynaktan derleme ad-hoc imzalıdır; `kur.sh` betiğini çalıştırmadan önce inceleyin.
 
 ## Kimler için?
 - **Avukatlar:** UETS üzerinden gelen e-tebligatları açan ve imzalayanlar — Mac'te "e-tebligat açılmıyor / imza atamıyorum" sorununu çözer.
-- **Arabulucular ve bilirkişiler:** Elektronik Tebligat Yönetmeliği gereği KEP/UETS kullanan zorunlu gruplar.
-- **Şirket yetkilileri:** Anonim, limited ve sermayesi paylara bölünmüş komandit şirketlerin zorunlu e-tebligat kullanıcıları.
+- **Arabulucular ve bilirkişiler:** Elektronik Tebligat Yönetmeliği kapsamında KEP/UETS kullanan gruplar.
+- **Şirket yetkilileri:** Anonim, limited ve sermayesi paylara bölünmüş komandit şirketlerin e-tebligat kullanıcıları.
 - **Mali müşavirler, doktorlar, mühendis-mimarlar:** KEP adresine e-tebligat gelen tüm profesyoneller.
 - **Hukuk büroları:** MacBook (M1/M2/M3/M4) ve iMac ile e-imza kurulumu.
 
 ## "Mac'te e-imza çalışmıyor" arayanlar için kısa cevaplar
 - **Neden Mac'te açılmıyor?** Uygulama Java Web Start (JNLP) tabanlı; Java Web Start Java 11 ve sonrasında kaldırıldı. Bu paket uygulamayı gömülü Java 11 ile native `.app`'e çevirir.
-- **MacBook / MacBook Pro / MacBook Air / iMac / Mac mini'de çalışır mı?** Evet — Apple Silicon (M1/M2/M3/M4) tüm modeller destekli. Intel Mac desteklenmez.
+- **MacBook / MacBook Pro / MacBook Air / iMac / Mac mini'de çalışır mı?** Evet — Apple Silicon (M1/M2/M3/M4 ve sonrası) modeller destekli. Intel Mac desteklenmez.
 - **Rosetta veya Java kurmam gerekir mi?** Hayır; ARM native (arm64), Java gömülü.
-- **İmza için ek olarak ne gerekir?** e-imza kartı + kart okuyucu + **arm64 AKİS sürücüsü** (aşağıda).
+- **İmza için ek olarak ne gerekir?** e-imza kartı + kart okuyucu + **arm64 AKİS sürücüsü** (yukarıda).
 
 ## Neden Mac'te çalışmıyordu? Nasıl çözdük?
 
@@ -26,22 +36,20 @@ UETS e-Tebligat e-imza uygulamasını **MacBook, MacBook Pro, MacBook Air, Mac m
 - **Doğrulama (dürüst not):** Uygulamanın açılışı ve sunucu bağlantısı test edildi; kart takılı olmadığından yalnızca "Akıllı Kart Bulunamadı" durumu görüldü. Gerçek kartla imzalama, aynı yöntemin kullanıldığı kardeş projede uçtan uca doğrulandı.
 
 ## Kurulum (3 yol)
-1. **Tek satır (kaynaktan derler):** aşağıdaki "Kolay kurulum" bölümü.
+1. **Hazır DMG (en hızlı):** [Releases](../../releases) → `UetsEimza-arm64-*.dmg`.
 2. **Homebrew cask (hazır DMG, derleme beklemez):**
 
 ```bash
 brew install --cask adeministratorr/tap/uets-eimza
 ```
 
-3. **Hazır DMG:** [Releases](../../releases) → `UetsEimza-arm64-*.dmg`
+3. **Tek satır (kaynaktan derler; betiği önce inceleyin):** aşağıdaki "Kolay kurulum" bölümü.
 
 Diğer araçlar (aynı tap): [e-Devlet E-İmza](https://github.com/adeministratorr/edevlet-eimza-mac-arm64) · [PTT KEP Webmail](https://github.com/adeministratorr/pttkep-eimza-mac-arm64) · [TNB Teknoloji İmza](https://github.com/adeministratorr/tnb-eimza-mac-arm64) · [UHAP İmzalama](https://github.com/adeministratorr/uhap-eimza-mac-arm64) · [UDF QuickLook](https://github.com/adeministratorr/udf-quicklook-extension) · [UYAP Doküman Editörü](https://github.com/adeministratorr/ude-mac-arm64-1)
 
-> ⚠️ **Önemli:** UETS (e-tebligat) ile PTT KEP Webmail **farklı** uygulamalardır; işlem kodları karşılıklı geçmez. Doğru uygulamayı seçtiğinizden emin olun (aşağıda karşılaştırma var).
-
 ---
 
-# PTT UETS E-İmza — Native Apple Silicon (arm64) .app
+## PTT UETS E-İmza — Native Apple Silicon (arm64) .app
 
 [UETS e-Tebligat](https://etebligat.gov.tr) (Ulusal Elektronik Tebligat Sistemi)
 E-İmza Uygulaması, bir Java Web Start (JNLP) uygulamasıdır. Java Web Start,
