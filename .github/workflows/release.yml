@@ -97,7 +97,7 @@ jobs:
             ## Not
             - ⚠️ **Bu uygulama yalnızca UETS (e-Tebligat) içindir.** PTT KEP Webmail işlem
               kodları burada çalışmaz; onun için
-              [pttkep-eimza-mac-arm64](https://github.com/saidsurucu/pttkep-eimza-mac-arm64)
+              [pttkep-eimza-mac-arm64](https://github.com/adeministratorr/pttkep-eimza-mac-arm64)
               deposunu kullanın.
             - ⚠️ **arm64 AKİS sürücüsü ŞART:** sistemde **Apple Silicon (arm64) AKİS** PKCS#11
               modülü kurulu olmalıdır (Intel-only sürücü arm64 uygulamaya yüklenmez). Kurulum

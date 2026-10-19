@@ -7,7 +7,7 @@
 #
 # İki şekilde çalışır:
 #   • İnternetten tek satırla:
-#       curl -fsSL https://raw.githubusercontent.com/saidsurucu/uets-eimza-mac-arm64/main/kur.sh | bash
+#       curl -fsSL https://raw.githubusercontent.com/adeministratorr/uets-eimza-mac-arm64/main/kur.sh | bash
 #     (kaynak kodu kendisi indirir, derler ve kurar)
 #   • Depoyu zaten indirdiyseniz, klasörün içinde:  ./kur.sh
 #
@@ -15,7 +15,7 @@
 
 set -euo pipefail
 
-REPO_URL="https://github.com/saidsurucu/uets-eimza-mac-arm64.git"
+REPO_URL="https://github.com/adeministratorr/uets-eimza-mac-arm64.git"
 CLONE_DIR="$HOME/uets-eimza-mac-arm64"
 
 # ----- Renkli, anlaşılır mesajlar -----
@@ -171,7 +171,7 @@ ok "${BOLD}BİTTİ.${RST} PTT UETS E-İmza artık Launchpad ve Applications'ta."
 say "Açmak için: ${BOLD}open \"$DEST_APP\"${RST}"
 printf '\n'
 warn "Bu uygulama ${BOLD}yalnızca UETS (e-Tebligat)${RST} içindir."
-say "  PTT KEP Webmail için ayrı uygulama gerekir: github.com/saidsurucu/pttkep-eimza-mac-arm64"
+say "  PTT KEP Webmail için ayrı uygulama gerekir: github.com/adeministratorr/pttkep-eimza-mac-arm64"
 printf '\n'
 warn "E-imza kullanacaksanız: TÜBİTAK AKİS'in ${BOLD}Apple Silicon (Arm)${RST} sürücüsünü kurun"
 say "  https://akiskart.bilgem.tubitak.gov.tr/destek/  → \"Mac OS Arm (Apple Silicon)\""

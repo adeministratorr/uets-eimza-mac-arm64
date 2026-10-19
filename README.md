@@ -62,7 +62,7 @@ kurmanıza gerek kalmaz.
 > **Gerçek kartla imzalama akışı bu depoda test edilmedi** — kart takılı
 > olmadığı için yalnızca "Akıllı Kart Bulunamadı" durumu görüldü. (Aynı
 > paketleme yöntemi, kardeş depo
-> [pttkep-eimza-mac-arm64](https://github.com/saidsurucu/pttkep-eimza-mac-arm64)'da
+> [pttkep-eimza-mac-arm64](https://github.com/adeministratorr/pttkep-eimza-mac-arm64)'da
 > gerçek kartla uçtan uca doğrulanmıştı.)
 
 ---
@@ -74,7 +74,7 @@ PTT'nin **iki ayrı** e-imza sistemi var ve **işlem kodları karşılıklı ge�
 | Sistem | Arayüz | Uygulama |
 |--------|--------|----------|
 | **UETS / e-Tebligat** | etebligat.gov.tr | **bu depo** |
-| PTT KEP Webmail | ptt.hs01.kep.tr | [pttkep-eimza-mac-arm64](https://github.com/saidsurucu/pttkep-eimza-mac-arm64) |
+| PTT KEP Webmail | ptt.hs01.kep.tr | [pttkep-eimza-mac-arm64](https://github.com/adeministratorr/pttkep-eimza-mac-arm64) |
 
 Yanlış uygulamaya işlem kodu girerseniz sunucu şu hatayı döner:
 
@@ -94,7 +94,7 @@ basın), ardından aşağıdaki **tek satırı** kopyalayıp yapıştırın ve *
 basın:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/saidsurucu/uets-eimza-mac-arm64/main/kur.sh | bash
+curl -fsSL https://raw.githubusercontent.com/adeministratorr/uets-eimza-mac-arm64/main/kur.sh | bash
 ```
 
 > Terminal'iniz Rosetta (x86_64) modunda açılmışsa betik bunu algılayıp kendini
