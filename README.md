@@ -1,3 +1,46 @@
+# PTT UETS E-İmza (e-Tebligat) — macOS Apple Silicon (M1/M2/M3/M4) Kurulumu (arm64)
+
+UETS e-Tebligat e-imza uygulamasını **MacBook, MacBook Pro, MacBook Air, Mac mini ve iMac**'de native çalıştırın. Apple Silicon (M serisi, ARM tabanlı işlemci) için **arm64** `.app`; gömülü Java 11 ile gelir — Rosetta gerekmez, ayrı Java kurulumu gerekmez.
+
+**Kimler için:** e-tebligat alan herkes — avukatlar, arabulucular ve bilirkişiler (1 Ocak 2019'dan beri UETS'e dahil olma ve KEP alma zorunluluğu vardır), anonim/limited şirketler (Tebligat Kanunu 7/A), mali müşavirler, doktorlar, mühendis ve mimarlar, sigorta ve finans profesyonelleri ile KEP adresi bulunan tüm kullanıcılar.
+
+## Kimler için?
+- **Avukatlar:** UETS üzerinden gelen e-tebligatları açan ve imzalayanlar — Mac'te "e-tebligat açılmıyor / imza atamıyorum" sorununu çözer.
+- **Arabulucular ve bilirkişiler:** Elektronik Tebligat Yönetmeliği gereği KEP/UETS kullanan zorunlu gruplar.
+- **Şirket yetkilileri:** Anonim, limited ve sermayesi paylara bölünmüş komandit şirketlerin zorunlu e-tebligat kullanıcıları.
+- **Mali müşavirler, doktorlar, mühendis-mimarlar:** KEP adresine e-tebligat gelen tüm profesyoneller.
+- **Hukuk büroları:** MacBook (M1/M2/M3/M4) ve iMac ile e-imza kurulumu.
+
+## "Mac'te e-imza çalışmıyor" arayanlar için kısa cevaplar
+- **Neden Mac'te açılmıyor?** Uygulama Java Web Start (JNLP) tabanlı; Java Web Start Java 11 ve sonrasında kaldırıldı. Bu paket uygulamayı gömülü Java 11 ile native `.app`'e çevirir.
+- **MacBook / MacBook Pro / MacBook Air / iMac / Mac mini'de çalışır mı?** Evet — Apple Silicon (M1/M2/M3/M4) tüm modeller destekli. Intel Mac desteklenmez.
+- **Rosetta veya Java kurmam gerekir mi?** Hayır; ARM native (arm64), Java gömülü.
+- **İmza için ek olarak ne gerekir?** e-imza kartı + kart okuyucu + **arm64 AKİS sürücüsü** (aşağıda).
+
+## Neden Mac'te çalışmıyordu? Nasıl çözdük?
+
+- **Sorun:** UETS e-tebligat uygulaması modern Mac'lerde açılmıyordu.
+- **Neden:** Uygulama Java Web Start (JNLP) ile dağıtılıyordu; Java Web Start Java 11 ile kaldırıldı. Eski Java 8 ise Retina ekranda bulanık çiziyordu.
+- **Çözüm:** `jpackage` + gömülü **arm64 Java 11** ile native `.app`; `jnlp.config` (sunucu adresleri) ve dil ayarları uygulamaya gömüldü. PTT KEP ile çakışmaması için ayrı bundle kimliği ve ayrı uygulama adıyla paketlendi.
+- **Kart erişimi:** Kart okuma TÜBİTAK ESYA API + `javax.smartcardio` üzerinden; sistemde **arm64 AKİS sürücüsü** kurulu olmalıdır.
+- **Doğrulama (dürüst not):** Uygulamanın açılışı ve sunucu bağlantısı test edildi; kart takılı olmadığından yalnızca "Akıllı Kart Bulunamadı" durumu görüldü. Gerçek kartla imzalama, aynı yöntemin kullanıldığı kardeş projede uçtan uca doğrulandı.
+
+## Kurulum (3 yol)
+1. **Tek satır (kaynaktan derler):** aşağıdaki "Kolay kurulum" bölümü.
+2. **Homebrew cask (hazır DMG, derleme beklemez):**
+
+```bash
+brew install --cask adeministratorr/tap/uets-eimza
+```
+
+3. **Hazır DMG:** [Releases](../../releases) → `UetsEimza-arm64-*.dmg`
+
+Diğer araçlar (aynı tap): [e-Devlet E-İmza](https://github.com/adeministratorr/edevlet-eimza-mac-arm64) · [PTT KEP Webmail](https://github.com/adeministratorr/pttkep-eimza-mac-arm64) · [TNB Teknoloji İmza](https://github.com/adeministratorr/tnb-eimza-mac-arm64) · [UHAP İmzalama](https://github.com/adeministratorr/uhap-eimza-mac-arm64) · [UDF QuickLook](https://github.com/adeministratorr/udf-quicklook-extension) · [UYAP Doküman Editörü](https://github.com/adeministratorr/ude-mac-arm64-1)
+
+> ⚠️ **Önemli:** UETS (e-tebligat) ile PTT KEP Webmail **farklı** uygulamalardır; işlem kodları karşılıklı geçmez. Doğru uygulamayı seçtiğinizden emin olun (aşağıda karşılaştırma var).
+
+---
+
 # PTT UETS E-İmza — Native Apple Silicon (arm64) .app
 
 [UETS e-Tebligat](https://etebligat.gov.tr) (Ulusal Elektronik Tebligat Sistemi)
