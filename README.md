@@ -1,3 +1,5 @@
+![UETS E-İmza — macOS e-Tebligat istemcisi](assets/social-preview.jpg)
+
 # PTT UETS E-imza (e-Tebligat) — macOS Apple Silicon kurulumu
 
 > **Kısa yanıt:** UETS üzerinden gelen e-tebligatı Mac'inizde açıp imzalamak mı istiyorsunuz? Bu proje, UETS e-imza istemcisini (JNLP) **MacBook, MacBook Pro, MacBook Air, Mac mini ve iMac**'de (Apple Silicon / M serisi / ARM tabanlı işlemci) çift tıklayla açılan native bir `.app`'e paketler: gömülü arm64 Java 11 sayesinde Rosetta veya ayrı Java gerekmez. **Gayriresmî topluluk çalışmasıdır; resmî kurum uygulaması değildir.**
