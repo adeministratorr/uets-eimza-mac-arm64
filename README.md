@@ -1,10 +1,14 @@
-![UETS E-İmza — macOS e-Tebligat istemcisi](assets/social-preview.jpg)
+![Mac’te UETS E-İmza Girişi — e-Tebligat ve İmzalama Programı](assets/social-preview.jpg)
 
-# PTT UETS E-imza (e-Tebligat) — macOS Apple Silicon kurulumu
+# Mac’te UETS E-İmza Girişi — e-Tebligat ve İmzalama Programı
 
 > **Kısa yanıt:** UETS üzerinden gelen e-tebligatı Mac'inizde açıp imzalamak mı istiyorsunuz? Bu proje, UETS e-imza istemcisini (JNLP) **MacBook, MacBook Pro, MacBook Air, Mac mini ve iMac**'de (Apple Silicon / M serisi / ARM tabanlı işlemci) çift tıklayla açılan native bir `.app`'e paketler: gömülü arm64 Java 11 sayesinde Rosetta veya ayrı Java gerekmez. **Gayriresmî topluluk çalışmasıdır; resmî kurum uygulaması değildir.**
 >
 > **KEP mi UETS mi?** UETS (e-tebligat) ile PTT KEP Webmail **farklı** uygulamalardır; işlem kodları karşılıklı geçmez. Doğru uygulamayı seçtiğinizden emin olun.
+>
+> **Önemli:** UETS hesabınıza gelen e-tebligatı **yalnızca okumak için elektronik imza zorunlu değildir**. PTT’ye göre girişte T.C. Kimlik No/UETS adresi ve UETS şifresi, e-Devlet, e-imza veya mobil imza seçenekleri kullanılabilir. Yalnızca okumak istiyorsanız önce bu yöntemleri deneyin.
+
+**Ayrıntılı Türkçe anlatım:** [Mac’te e-imza ve UYAP kurulumu, ilk kullanım ve hata çözümleri](https://ademyuce.tr/macos-eimza-uyap/).
 
 ## İlk kez kuranlar için
 
@@ -28,6 +32,7 @@
 - **MacBook / MacBook Pro / MacBook Air / iMac / Mac mini'de çalışır mı?** Evet — Apple Silicon (M1/M2/M3/M4 ve sonrası) modeller destekli. Intel Mac desteklenmez.
 - **Rosetta veya Java kurmam gerekir mi?** Hayır; ARM native (arm64), Java gömülü.
 - **İmza için ek olarak ne gerekir?** e-imza kartı + kart okuyucu + **arm64 AKİS sürücüsü** (yukarıda).
+- **E-tebligat okumak için elektronik imza şart mı?** Hayır. PTT’ye göre UETS’ye T.C. Kimlik No/UETS adresi ve UETS şifresi, e-Devlet, e-imza veya mobil imza ile giriş yapılabilir.
 
 ## Neden Mac'te çalışmıyordu? Nasıl çözdük?
 
