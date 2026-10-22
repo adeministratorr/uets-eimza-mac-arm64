@@ -62,6 +62,9 @@ APP_VERSION="${APP_VERSION:-1.1.60}"
 
 CODEBASE="https://api.etebligat.gov.tr/v1/auth/_eimza"
 JAR_URL="${JAR_URL:-$CODEBASE/$MAIN_JAR}"
+# CI yedeği: repoya commitlenen vendor jar varsa önce onu kullan (ptt.hs01/api.etebligat
+# GH runner egress'inden erişilemeyebiliyor).
+[ -s "$ROOT/vendor/$MAIN_JAR" ] && JAR_URL="file://$ROOT/vendor/$MAIN_JAR"
 CONFIG_URL="$CODEBASE/config.properties"
 JAR_FILE="$DOWNLOADS/$MAIN_JAR"
 # İkon: JNLP <icon href="logo.png"/> → codebase'de MEVCUT (250x173 UETS amblemi).
