@@ -154,7 +154,7 @@ download() {
 	# NOT: api.etebligat.gov.tr HEAD isteklerine 404 döner; yalnızca GET çalışır
 	# (curl -I ile denetlemeye kalkma).
 	[ -s "$JAR_FILE" ] && c_ok "Önbellekten: $JAR_FILE ($(du -h "$JAR_FILE" | cut -f1))" \
-		|| { c_info "İndiriliyor: $JAR_URL"; curl -fL --retry 3 -o "$JAR_FILE" "$JAR_URL"; }
+		|| { c_info "İndiriliyor: $JAR_URL"; curl -fL --retry 6 --retry-delay 4 --retry-all-errors -o "$JAR_FILE" "$JAR_URL" || for ALT in ${JAR_URL_FALLBACKS:-}; do curl -fL --retry 4 --retry-delay 4 --retry-all-errors -o "$JAR_FILE" "$ALT" && break; done; }
 	# Doğrula: main-class. Manifest ~1.3 MB (her sınıfın SHA-256'sı var) → yalnızca
 	# başı okunur. `unzip -p | head` KULLANMA: head erken çıkınca unzip SIGPIPE alır
 	# ve `set -o pipefail` yüzünden betik 141 ile ölür. Önce dosyaya al.
